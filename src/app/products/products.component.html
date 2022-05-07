@@ -1,0 +1,66 @@
+<!-- <p>products works!</p> -->
+<h1>
+	{{storeName}}
+</h1>
+<img [src]="imageSrc" [alt]="imageAlt" />
+<h3>
+	{{"We offer an explicit discount of : " + Discount}}
+</h3>
+
+<!-- ********************************************Q1 and Q of percent**************************************************** -->
+<!-- <h3 *ngIf="Discount !== 'No Discount' ; then show ; else hidden "></h3>
+<ng-template #show>
+	<h3> {{Discount | percent}}</h3>
+</ng-template>
+
+<ng-template #hidden>
+
+</ng-template> -->
+<br>
+<!-- ***************************************Q2=dropdownlist********************************************************** -->
+<h3>Choose Your Favorite Catogroy please</h3>
+<select #cricket (change)="update($event)">
+	<option value="default"> select----</option>
+	<option *ngFor="let Catogroy of CategoryList" [value]="Catogroy">
+		{{Catogroy.Name}}
+	</option>
+</select>
+
+<p>thanks for Your selecting this item</p>
+<!-- *******************************************Q4=twowaybinding****************************************************** -->
+<h2>two way binding</h2>
+<input type="text" [(ngModel)]="ClientName" />
+{{ClientName}}
+<br>
+<!-- *****************************************Q5=pipesUppercase*********************************************** -->
+<h2>pipe clinentName to uppercase</h2>
+{{nameOfClient | uppercase}}
+<br>
+<!-- ******************************************Q3=table********************************************************** -->
+<button (click)="buttontnClicked()">Buy</button>
+<div *ngIf="flag; then showTable ; else hiddenTable "></div>
+
+
+	<ng-template #showTable>
+		<table>
+			<thead>
+				<th>Name </th>
+				<th> || price</th>
+				<th>|| Quantity</th>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of ProductList">
+					<td>{{item.ID}}</td>
+					<td> || {{item.Name}}</td>
+					<td> || {{item.Price}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</ng-template>
+	<ng-template #hiddenTable>
+		<div>
+			{{"We offer an explicit discount of : " + nameOfClient}}
+		</div>
+	</ng-template>
+
+<!-- *************************************** button**************************************************************** -->
